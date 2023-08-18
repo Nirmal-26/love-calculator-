@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  .container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+  h1 {
+    color: #e74c3c;
+  }
+  label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #c0392b;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Love Calculator</h1>
+  <form id="loveCalculatorForm">
+    <label for="name1">Your Name:</label>
+    <input type="text" id="name1" required>
+    <label for="name2">Partner's Name:</label>
+    <input type="text" id="name2" required>
+    <button type="button" id="calculateButton">Calculate Love</button>
+    <div id="result"></div>
+  </form>
+</div>
+<script>
+  const calculateButton = document.getElementById("calculateButton");
+  const resultDiv = document.getElementById("result");
+
+  calculateButton.addEventListener("click", () => {
+    const name1 = document.getElementById("name1").value.toLowerCase();
+    const name2 = document.getElementById("name2").value.toLowerCase();
+
+    let totalLove = 0;
+    for (let i = 0; i < name1.length; i++) {
+      totalLove += name1.charCodeAt(i);
+    }
+    for (let i = 0; i < name2.length; i++) {
+      totalLove += name2.charCodeAt(i);
+    }
+
+    const lovePercentage = totalLove % 101;
+    resultDiv.innerHTML = `<p>Your Love Percentage: ${lovePercentage}%</p>`;
+  });
+</script>
+</body>
+</html>
